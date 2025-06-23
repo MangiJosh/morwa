@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morwasehla Attorneys - Modern Home</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <style>
+        :root {
+            --primary-blue: #21d9ff;
+            --primary-green: #baf974;
+            --dark-gray: #333333;
+            --light-gray: #f8f9fa;
+            --text-color: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--light-gray);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            padding: 5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--text-color);
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+        .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding-top: 80px; /* Offset for fixed header */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 0 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Styling */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--dark-gray);
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #718096;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-item .icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .service-item h3 {
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-item p {
+            color: #718096;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            opacity: 0.9;
+        }
+
+        .cta-section .cta-button {
+            background: var(--dark-gray);
+            color: white;
+        }
+
+        .cta-section .cta-button:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide default nav on small screens */
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -80%; /* Off-screen */
+                width: 80%;
+                height: 100vh;
+                background: white;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                padding: 80px 20px;
+                transition: right 0.3s ease-in-out;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0; /* Slide in */
+            }
+
+            .mobile-menu-btn {
+                display: block; /* Show hamburger */
+            }
+
+            .hero {
+                padding-top: 100px;
+                min-height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 1rem auto;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-section h3, .footer-section p, .footer-section a {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.8rem;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 1rem 0;
+                text-align: center;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .stat {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <header>
+        <div class="container header-content">
+            <a href="home1.html">
+                <img src="images/logo.png" alt="Morwasehla Attorneys Logo" class="logo-img">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="home1.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html#team-section">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Expert Legal Solutions</h1>
+                <p>Navigating complex legal landscapes with clarity, integrity, and unparalleled expertise. We are dedicated to delivering results that matter.</p>
+                <a href="contact.html" class="cta-button">Get a Free Consultation</a>
+                <a href="services.html" class="cta-button cta-secondary">Explore Our Services</a>
+            </div>
+        </section>
+
+        <section class="about section-padding">
+            <div class="container about-grid">
+                <div class="about-image">
+                    <img src="images/about-us.jpg" alt="About Us Image">
+                </div>
+                <div class="about-text">
+                    <h3 class="section-title-left" style="color: #000000;">Committed to Justice.</h3>
+                    <p>Morwasehla Attorneys, established in October 2015, is founded on the principle that justice should be accessible to all. Our dedication to our clients' success is unwavering, as we provide innovative legal solutions across a multitude of disciplines.</p>
+                    <p>We approach every case with respect, dignity, integrity, honesty, honor, and a relentless pursuit of excellence and truth. Our services are meticulously customized to meet the unique needs of each client, fostering deep trust and long-term relationships.</p>
+                    <p>Our primary goal is to deliver effective resolutions to your legal challenges, ensuring client satisfaction and sustained retention. Partner with us for legal guidance that cuts through complexity.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="services section-padding" style="background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Specialized Legal Expertise</h2>
+                    <p>Our comprehensive legal services cover a broad spectrum of practice areas, ensuring expert guidance for every challenge.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="icon">💼</div>
+                        <h3>Corporate & Commercial Law</h3>
+                        <p>Strategic counsel for business formation, M&A, contracts, and governance.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon">🏛️</div>
+                        <h3>General Litigation</h3>
+                        <p>Representation in commercial, employment, civil, and property disputes.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon">🤝</div>
+                        <h3>Labour & Employment Law</h3>
+                        <p>Disciplinary, arbitration, and legal support for workplace matters.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon">👨‍👩‍👧‍👦</div>
+                        <h3>Divorce & Family Law</h3>
+                        <p>Compassionate assistance for divorce, custody, and family legal issues.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon">🎬</div>
+                        <h3>Entertainment Law</h3>
+                        <p>Expertise in distribution agreements and entertainment contracts.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon">📜</div>
+                        <h3>Deceased Estates</h3>
+                        <p>Full administration services for wills, trusts, and estate distribution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Discuss Your Legal Needs?</h2>
+                <p>Contact us today for a confidential consultation. Our team is here to provide the clarity and support you deserve.</p>
+                <a href="contact.html" class="cta-button">Schedule a Consultation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Morwasehla Attorneys</h3>
+                    <p>"Cutting Through Disciplines" - Committed to delivering justice and client satisfaction.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Practice Areas</h3>
+                    <p>
+                        <a href="services.html">Corporate Law</a><br>
+                        <a href="services.html">Litigation</a><br>
+                        <a href="services.html">Labour Law</a><br>
+                        <a href="services.html">Family Law</a><br>
+                        <a href="services.html">Entertainment Law</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p>
+                        <a href="index.html">Home</a><br>
+                        <a href="about.html">About Us</a><br>
+                        <a href="about.html#team-section">Our Team</a><br>
+                        <a href="services.html">Services</a><br>
+                        <a href="contact.html">Contact</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>
+                        Office 408 Boston Building<br>
+                        130 Main Street, Marshalltown<br>
+                        Johannesburg<br><br>
+                        Phone: 011 339 1321<br>
+                        Mobile: 076 641 7870<br>
+                        Email: info@morwa-attorneys.co.za
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Morwasehla Attorneys. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect (optional, removed fixed header for now)
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const body = document.body;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu on outside click
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Basic scroll animation (optional)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                } else {
+                    entry.target.style.opacity = '0'; /* Reset when out of view */
+                    entry.target.style.transform = 'translateY(20px)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-title, .about-grid, .service-item, .cta-section h2, .cta-section p, .cta-section .cta-button').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            fadeInObserver.observe(el);
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html> 

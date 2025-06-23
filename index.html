@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morwasehla Attorneys - Cutting Through Disciplines</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            padding: 5px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: #b8860b;
+        }
+
+        .logo-main {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #21d9ff;
+        }
+
+        .logo-sub {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            color: #baf974;
+            margin-top: -2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #21d9ff;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #21d9ff;
+            transition: width 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: relative;
+            height: 80vh;
+            width: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-1 {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider1.jpg');
+            background-size: 100% 100%;
+        }
+
+        .slide-2 {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: 100% 100%;
+        }
+
+        .slide-3 {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider3.jpg');
+            background-size: 100% 100%;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: #ffffff;
+            transform: scale(1.2);
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .slider-prev {
+            left: 2rem;
+        }
+
+        .slider-next {
+            right: 2rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            text-transform: uppercase;
+        }
+
+        .bible-verse {
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+            border-left: 3px solid rgba(255, 255, 255, 0.5);
+            padding-left: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            margin-right: 1rem;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            right: 25%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(135deg, #baf974 0%, transparent 100%);
+            transform: skewY(-1deg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+               .service-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-image.family-law {
+            background-image: url('https://images.pexels.com/photos/1128317/pexels-photo-1128317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+
+        .card-image.litigation {
+            background-image: url('https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+
+        .card-image.entertainment {
+            background-image: url('https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+        
+        .card-content {
+            padding: 2rem 2.5rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: #000000;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #718096;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .service-button {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #baf974;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 1.5rem;
+            align-self: flex-start;
+        }
+
+        .service-button:hover {
+            background: #a8e05f;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000000;
+            display: block;
+        }
+
+        .stat-label {
+            color: #718096;
+            margin-top: 0.5rem;
+        }
+
+        /* Location Section */
+        .location {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .location-text h2 {
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .location-benefits {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .location-benefits li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .location-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #b8860b;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: linear-gradient(145deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333333;
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ffffff;
+            text-decoration: none;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .footer-section a:hover {
+            color: #baf974;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            text-align: center;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex; /* Make it a flex container on mobile */
+                align-items: center;
+                justify-content: center;
+                background: rgba(220, 220, 220, 0.5); /* Temporary background for visibility */
+                padding: 10px;
+                border-radius: 5px; /* Slightly rounded corners */
+                border: 1px solid #ccc; /* Subtle border for visibility */
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Start off-screen */
+                width: 80%;
+                height: 100vh;
+                background: #ffffff;
+                flex-direction: column;
+                padding: 80px 20px;
+                transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Smooth transition */
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                opacity: 0; /* Start invisible */
+                visibility: hidden; /* Hide by default on mobile, allows transitions */
+                pointer-events: none; /* Disable interaction when hidden */
+            }
+
+            .nav-links.active {
+                right: 0;
+                opacity: 1;
+                visibility: visible; /* Show when active */
+                pointer-events: auto; /* Enable interaction when active */
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .mobile-menu-btn.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .mobile-menu-btn.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-btn.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero-content {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 0 20px;
+            }
+
+            .footer-section {
+                margin-bottom: 2rem;
+            }
+
+            .slider-arrow {
+                width: 40px;
+                height: 40px;
+            }
+
+            .slider-prev {
+                left: 1rem;
+            }
+
+            .slider-next {
+                right: 1rem;
+            }
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 1rem 0;
+                text-align: center;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .stat {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: #baf974;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background: #21d9ff;
+            transform: translateY(-3px);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2.2rem;
+            color: #000000;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 32px;
+            height: 4px;
+            background: #000000;
+            margin: 6px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Morwasehla Attorneys Logo" class="logo-img">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html#team-section">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="slide slide-1 active">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Justice Accessible to All</h1>
+                        <p>Providing innovative legal solutions with unwavering commitment to our clients' success.</p>
+                        <a href="contact.html" class="cta-button">Schedule Consultation</a>
+                        <a href="about.html" class="cta-button cta-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide slide-2">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Expert Legal Solutions</h1>
+                        <p>Our team works diligently to provide solutions that align with the best interests of our clients.</p>
+                        <a href="services.html" class="cta-button">Our Services</a>
+                        <a href="about.html#team-section" class="cta-button cta-secondary">Meet Our Team</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-controls">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+            </div>
+            <div class="slider-arrow slider-prev">❮</div>
+            <div class="slider-arrow slider-next">❯</div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Practice Areas</h2>
+                <p>We provide comprehensive legal services across multiple disciplines, delivering customized solutions that reinforce trust and confidence in our legal system.</p>
+            </div>
+                       <div class="services-grid">
+                <div class="service-card">
+                    <div class="card-image family-law"></div>
+                    <div class="card-content">
+                        <h3>Divorce & Family Law</h3>
+                        <p>Offering compassionate legal assistance in family matters such as divorce, custody arrangements, prenuptial agreements, and property division.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="card-image litigation"></div>
+                    <div class="card-content">
+                        <h3>General Litigation</h3>
+                        <p>Representing clients in litigation matters, including commercial disputes, employment issues, civil litigation, evictions, delict, liquidated claims, and enforcement of court orders.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="card-image entertainment"></div>
+                    <div class="card-content">
+                        <h3>Entertainment Law</h3>
+                        <p>Specialized legal services for the entertainment industry, including drafting and reviewing distribution agreements and entertainment contracts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Excellence Since 2015</h2>
+                    <p>Morwasehla Attorneys came into existence in October 2015 and is committed to ensuring that justice is accessible to various clientele. Our motto "cutting through disciplines" reflects our comprehensive approach.</p>
+                    <p>We uphold the law with respect, dignity, integrity, honesty, honour, excellence, and truth. Our services are customized to suit our clients' different needs, reinforcing trust and confidence.</p>
+                    <p>Our frontline output is providing clients with resolutions to their legal problems, thereby achieving client satisfaction and long-term client retention.</p>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">9+</span>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6</span>
+                        <div class="stat-label">Candidate Attorneys Trained</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100+</span>
+                        <div class="stat-label">Cases Handled</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <div class="stat-label">Client Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location" id="location">
+        <div class="container">
+            <div class="location-content">
+                <div class="location-text">
+                    <h2>Strategic Location</h2>
+                    <p>Our office is strategically situated in the Johannesburg CBD area, providing unmatched access to key legal institutions and courts.</p>
+                    
+                    <ul class="location-benefits">
+                        <li>Walking distance to Johannesburg Magistrate Court</li>
+                        <li>Close proximity to CCMA and High Court</li>
+                        <li>Next to Carlton Center Mall with ample parking</li>
+                        <li>Accessible by public transport and Gautrain</li>
+                        <li>Near Office of the Master of the High Court</li>
+                        <li>Reduced traveling costs for litigation matters</li>
+                    </ul>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><strong>Address:</strong><br>
+                    Office 408 Boston Building<br>
+                    130 Main Street, Marshalltown<br>
+                    Johannesburg</p>
+                    
+                    <p><strong>Phone:</strong> 011 339 1321</p>
+                    <p><strong>Mobile:</strong> 076 641 7870</p>
+                    <p><strong>Email:</strong> info@morwa-attorneys.co.za</p>
+                    <p><strong>Website:</strong> www.morwa-attorneys.co.za</p>
+                    
+                    <p style="margin-top: 1rem; font-style: italic;">We offer consultations at our office, at client premises, or online via Zoom/MS Teams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Morwasehla Attorneys</h3>
+                    <p>"Cutting Through Disciplines"</p>
+                    <p style="font-style: italic; margin-top: 1rem;">"See a person who excels in his work, he will stand before great man and not unknown man" - Proverbs 22:29</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Practice Areas</h3>
+                    <p><a href="services.html">Corporate Law</a><br>
+                    <a href="services.html">Litigation</a><br>
+                    <a href="services.html">Labour Law</a><br>
+                    <a href="services.html">Family Law</a><br>
+                    <a href="services.html">Entertainment Law</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="index.html">Home</a><br>
+                    <a href="about.html">About Us</a><br>
+                    <a href="about.html#team-section">Our Team</a><br>
+                    <a href="services.html">Services</a><br>
+                    <a href="contact.html">Contact</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>
+                        Office 408 Boston Building<br>
+                        130 Main Street, Marshalltown<br>
+                        Johannesburg<br><br>
+                        <strong>Phone:</strong> 011 339 1321<br>
+                        <strong>Mobile:</strong> 076 641 7870<br>
+                        <strong>Email:</strong> info@morwa-attorneys.co.za
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Morwasehla Attorneys. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add hover effects to stats
+        document.querySelectorAll('.stat').forEach(stat => {
+            stat.addEventListener('mouseenter', () => {
+                stat.style.transform = 'scale(1.05)';
+                stat.style.transition = 'transform 0.3s ease';
+            });
+            
+            stat.addEventListener('mouseleave', () => {
+                stat.style.transform = 'scale(1)';
+            });
+        });
+
+        // Hero Slider functionality
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.querySelector('.slider-prev');
+        const nextBtn = document.querySelector('.slider-next');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto slide every 8 seconds
+        setInterval(nextSlide, 8000);
+
+        // Event listeners for controls
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const body = document.body;
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-btn')) {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>
