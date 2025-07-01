@@ -406,6 +406,74 @@
             display: flex;
         }
 
+        /* Testimonials Section */
+        .testimonials-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-green);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary-blue);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            color: var(--primary-blue);
+            font-family: Georgia, serif;
+            opacity: 0.3;
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-content p {
+            color: var(--text-color);
+            line-height: 1.7;
+            font-style: italic;
+            margin-left: 1rem;
+        }
+
+        .testimonial-author {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 1rem;
+            margin-left: 1rem;
+        }
+
+        .testimonial-author h4 {
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-author span {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .nav-links {
@@ -499,6 +567,18 @@
         @media (max-width: 576px) {
             .values-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Responsive adjustments for testimonials */
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .testimonial-card {
+                padding: 2rem 1.5rem;
             }
         }
     </style>
@@ -633,6 +713,46 @@
                         <h4>Buitumelo Setekwa</h4>
                         <p>Receptionist</p>
                         <p>LLB Student</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section section-padding">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Our Clients Say</h2>
+                    <p>Hear from our satisfied clients about their experience with Morwasehla Attorneys.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Morwasehla Attorneys provided exceptional legal guidance during my corporate restructuring. Their expertise and attention to detail ensured a smooth process. Highly recommended for any business legal matters."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Client 1</h4>
+                            <span>Corporate Client</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The team handled my family law case with compassion and professionalism. They made a difficult time much easier to navigate. Their dedication to client satisfaction is truly remarkable."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Client 2</h4>
+                            <span>Family Law Client</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Outstanding service in labour law matters. They successfully resolved my employment dispute efficiently and kept me informed throughout the entire process. Excellent legal representation."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Client 3</h4>
+                            <span>Labour Law Client</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -775,7 +895,7 @@
             });
         }, fadeInObserverOptions);
 
-        document.querySelectorAll('.section-title, .about-content-grid, .value-card, .service-item, .cta-section h2, .cta-section p, .cta-section .cta-button, .team-member-card').forEach(el => {
+        document.querySelectorAll('.section-title, .about-content-grid, .value-card, .service-item, .cta-section h2, .cta-section p, .cta-section .cta-button, .team-member-card, .testimonial-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
