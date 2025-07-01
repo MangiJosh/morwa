@@ -175,12 +175,15 @@
 
         .service-card {
             background: white;
-            padding: 2.5rem 2rem;
+            padding: 0;
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
             text-align: center;
             transition: all 0.3s ease;
             border-top: 4px solid var(--primary-green);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
@@ -189,10 +192,55 @@
             border-top-color: var(--primary-blue);
         }
 
+        /* Comment out icon styling for potential future reactivation */
+        /*
         .service-card .icon {
             font-size: 3rem;
             color: var(--primary-blue);
             margin-bottom: 1.5rem;
+        }
+        */
+
+        /* Add card image styling similar to home page */
+        .card-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-image.corporate {
+            background-image: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+
+        .card-image.litigation {
+            background-image: url('https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+
+        .card-image.labour {
+            background-image: url('https://images.pexels.com/photos/8487371/pexels-photo-8487371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+
+        .card-image.family {
+            background-image: url('https://images.pexels.com/photos/1128317/pexels-photo-1128317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+
+        .card-image.entertainment {
+            background-image: url('https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+
+        .card-image.estate {
+            background-image: url('https://images.pexels.com/photos/5060979/pexels-photo-5060979.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+
+        .card-image.wills {
+            background-image: url('images/wills.png');
+        }
+
+        .card-content {
+            padding: 2rem 2.5rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .service-card h3 {
@@ -204,6 +252,7 @@
         .service-card p {
             color: #718096;
             line-height: 1.7;
+            flex-grow: 1;
         }
 
         /* CTA Section */
@@ -396,34 +445,53 @@
                 </div>
                 <div class="services-grid">
                     <div class="service-card">
-                        <div class="icon">⚖️</div>
-                        <h3>Corporate & Commercial Law</h3>
-                        <p>Strategic legal advice on business formation, mergers and acquisitions, contracts, and corporate governance to navigate complex regulatory environments.</p>
+                        <div class="card-image corporate"></div>
+                        <div class="card-content">
+                            <h3>Corporate & Commercial Law</h3>
+                            <p>Strategic legal advice on business formation, mergers and acquisitions, contracts, and corporate governance to navigate complex regulatory environments.</p>
+                        </div>
                     </div>
                     <div class="service-card">
-                        <div class="icon">🏛️</div>
-                        <h3>General Litigation</h3>
-                        <p>Representing clients in commercial disputes, employment issues, civil litigation, evictions, delict, liquidated claims, and enforcement of court orders.</p>
+                        <div class="card-image litigation"></div>
+                        <div class="card-content">
+                            <h3>General Litigation</h3>
+                            <p>Representing clients in commercial disputes, employment issues, civil litigation, evictions, delict, liquidated claims, and enforcement of court orders.</p>
+                        </div>
                     </div>
                     <div class="service-card">
-                        <div class="icon">👥</div>
-                        <h3>Labour & Employment Law</h3>
-                        <p>Handling disciplinary enquiries, grievances, arbitrations at CCMA, and drafting employment contracts and policies for both employers and employees.</p>
+                        <div class="card-image labour"></div>
+                        <div class="card-content">
+                            <h3>Labour & Employment Law</h3>
+                            <p>Handling disciplinary enquiries, grievances, arbitrations at CCMA, and drafting employment contracts and policies for both employers and employees.</p>
+                        </div>
                     </div>
                     <div class="service-card">
-                        <div class="icon">👨‍👩‍👧‍👦</div>
-                        <h3>Divorce & Family Law</h3>
-                        <p>Offering compassionate legal assistance in sensitive family matters such as divorce, custody arrangements, prenuptial agreements, and property division.</p>
+                        <div class="card-image family"></div>
+                        <div class="card-content">
+                            <h3>Divorce & Family Law</h3>
+                            <p>Offering compassionate legal assistance in sensitive family matters such as divorce, custody arrangements, prenuptial agreements, and property division.</p>
+                        </div>
                     </div>
                     <div class="service-card">
-                        <div class="icon">🎭</div>
-                        <h3>Entertainment Law</h3>
-                        <p>Specialized legal services for the entertainment industry, including drafting and reviewing distribution agreements and other related contracts.</p>
+                        <div class="card-image entertainment"></div>
+                        <div class="card-content">
+                            <h3>Entertainment Law</h3>
+                            <p>Specialized legal services for the entertainment industry, including drafting and reviewing distribution agreements and other related contracts.</p>
+                        </div>
                     </div>
                     <div class="service-card">
-                        <div class="icon">📋</div>
-                        <h3>Administration of Deceased Estates</h3>
-                        <p>Complete estate administration including lodging deceased estates, obtaining letters of executorship, advertising, and managing distribution.</p>
+                        <div class="card-image estate"></div>
+                        <div class="card-content">
+                            <h3>Administration of Deceased Estates</h3>
+                            <p>Complete estate administration including lodging deceased estates, obtaining letters of executorship, advertising, and managing distribution.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="card-image wills"></div>
+                        <div class="card-content">
+                            <h3>Wills and Deceased Estate Administration</h3>
+                            <p>Comprehensive will drafting, estate planning, and deceased estate administration services including probate, asset distribution, and legal compliance.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -469,8 +537,7 @@
                     <h3>Contact Us</h3>
                     <p>
                         Office 408 Boston Building<br>
-                        130 Main Street, Marshalltown<br>
-                        Johannesburg<br><br>
+                        130 Main Street, Marshalltown, JHB<br>
                         Phone: 011 339 1321<br>
                         Mobile: 076 641 7870<br>
                         Email: info@morwa-attorneys.co.za
