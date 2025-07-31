@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Morwasehla Attorneys</title>
+    <title>Thank You - Morwasehla Attorneys</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
         :root {
@@ -166,107 +166,95 @@
             color: #718096;
         }
 
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: flex-start;
-        }
-
-        .contact-info-block h3 {
-            font-size: 1.8rem;
-            color: var(--dark-gray);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info-item .icon {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-right: 1rem;
-            margin-top: 5px;
-        }
-
-        .contact-info-item p {
-            line-height: 1.7;
-            color: #718096;
-        }
-        
-        .contact-form {
+        /* Thank You Section */
+        .thank-you-section {
             background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+            padding: 80px 0;
         }
 
-        .form-group {
+        .thank-you-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .thank-you-icon {
+            font-size: 4rem;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+        }
+
+        .thank-you-content h2 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: var(--dark-gray);
+        .thank-you-content p {
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-btn {
+        .home-button {
             display: inline-block;
-            width: 100%;
-            padding: 1rem;
+            padding: 15px 40px;
             background: var(--primary-blue);
             color: white;
-            border: none;
-            border-radius: 8px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
             font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .submit-btn:hover {
+        .home-button:hover {
             background: var(--primary-green);
             color: var(--dark-gray);
-        }
-        
-        /* Map Section */
-        .map-section {
-             padding-bottom: 100px;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .map-container {
-            height: 450px;
+        /* Services Overview */
+        .services-overview {
+            background: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
             border-radius: 15px;
-            overflow: hidden;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-green);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-top-color: var(--primary-blue);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #718096;
+            line-height: 1.7;
         }
 
         /* Footer */
@@ -339,11 +327,6 @@
         }
 
         /* Responsive adjustments */
-        @media (max-width: 992px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
         @media (max-width: 768px) {
             .nav-links {
                 flex-direction: column;
@@ -357,12 +340,12 @@
                 padding: 80px 20px;
                 transition: right 0.3s ease-in-out;
                 z-index: 999;
-                display: none; /* Hide by default */
+                display: none;
             }
 
             .nav-links.active {
                 right: 0;
-                display: flex; /* Show when active */
+                display: flex;
             }
 
             .mobile-menu-btn {
@@ -375,8 +358,9 @@
             }
             .page-header h1 { font-size: 2rem; }
             .section-title h2 { font-size: 2.2rem; }
+            .thank-you-content h2 { font-size: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
-
         }
     </style>
 </head>
@@ -399,7 +383,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html#team-section">Team</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -408,91 +392,55 @@
     <main>
         <section class="page-header">
             <div class="container">
-                <h1>Contact Us</h1>
+                <h1>Thank You!</h1>
                 <p class="breadcrumb">
-                    <a href="index.html">Home</a> <span>/</span> <span class="current">Contact</span>
+                    <a href="index.html">Home</a> <span>/</span> <span class="current">Thank You</span>
                 </p>
             </div>
         </section>
 
-        <section class="contact-details section-padding">
+        <section class="thank-you-section section-padding">
             <div class="container">
-                <div class="section-title">
-                    <h2>Get In Touch</h2>
-                    <p>We're here to help. Reach out to us with any questions or to schedule a consultation. Our team is ready to provide the legal support you need.</p>
-                </div>
-                <div class="contact-grid">
-                    <div class="contact-info-block">
-                        <h3>Our Office</h3>
-                        <div class="contact-info-item">
-                            <span class="icon">📍</span>
-                            <div>
-                                <strong>Address:</strong>
-                                <p>Office 408 Boston Building, 130 Main Street, Marshalltown, Johannesburg</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <span class="icon">📞</span>
-                            <div>
-                                <strong>Phone:</strong>
-                                <p>011 339 1321</p>
-                            </div>
-                        </div>
-                         <div class="contact-info-item">
-                            <span class="icon">📱</span>
-                            <div>
-                                <strong>Mobile:</strong>
-                                <p>076 641 7870</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <span class="icon">✉️</span>
-                            <div>
-                                <strong>Email:</strong>
-                                <p>info@morwa-attorneys.co.za</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <span class="icon">⏰</span>
-                            <div>
-                                <strong>Business Hours:</strong>
-                                <p>Monday - Friday: 8:00 AM - 4:30 PM<br>Saturday & Sunday: Closed</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <form action="send-email.php" method="POST">
-                            <div class="form-group">
-                                <label for="name">Full Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" required></textarea>
-                            </div>
-                            <button type="submit" class="submit-btn">Send Message</button>
-                        </form>
-                    </div>
+                <div class="thank-you-content">
+                    <div class="thank-you-icon">✓</div>
+                    <h2>Message Sent Successfully!</h2>
+                    <p>Thank you for contacting Morwasehla Attorneys. We have received your message and will get back to you within 24 hours. Our team is committed to providing you with the expert legal guidance you need.</p>
+                    <a href="index.html" class="home-button">Return to Home Page</a>
                 </div>
             </div>
         </section>
 
-        <section class="map-section">
+        <section class="services-overview section-padding">
             <div class="container">
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.907539655845!2d28.04033331503003!3d-26.20078098344035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950e9ebef69985%3A0x86f4a50965319942!2s130%20Main%20St%2C%20Marshalltown%2C%20Johannesburg%2C%202001%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1678886400000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="section-title">
+                    <h2>Our Legal Services</h2>
+                    <p>While you wait for our response, explore the comprehensive legal services we offer to meet your needs.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Corporate & Commercial Law</h3>
+                        <p>Strategic legal advice on business formation, mergers and acquisitions, contracts, and corporate governance.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>General Litigation</h3>
+                        <p>Representing clients in commercial disputes, employment issues, civil litigation, and enforcement of court orders.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Labour & Employment Law</h3>
+                        <p>Handling disciplinary enquiries, grievances, arbitrations at CCMA, and drafting employment contracts.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Divorce & Family Law</h3>
+                        <p>Offering compassionate legal assistance in sensitive family matters such as divorce and custody arrangements.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Entertainment Law</h3>
+                        <p>Specialized legal services for the entertainment industry, including distribution agreements and contracts.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Wills and Estate Administration</h3>
+                        <p>Comprehensive will drafting, estate planning, and deceased estate administration services.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -501,7 +449,7 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                 <div class="footer-section">
+                <div class="footer-section">
                     <h3>Morwasehla Attorneys</h3>
                     <p>"Cutting Through Disciplines" - Committed to delivering justice and client satisfaction.</p>
                 </div>
@@ -584,24 +532,6 @@
                 body.style.overflow = '';
             }
         });
-
-        // Basic scroll animation
-        const fadeInObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.section-title, .contact-grid, .map-container').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            fadeInObserver.observe(el);
-        });
     </script>
 </body>
-</html>
+</html> 
