@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Email recipient
-    $to = "mangi@thingstech.co.za";
+    $to = "neileng@morwa-attorneys.co.za";
     
     // Email subject
     $email_subject = "New Contact Form Submission - Morwasehla Attorneys";
